@@ -14,3 +14,4 @@
 # govendor folders except the .json
 vendor/*
 !vendor/vendor.json
+/goVendorTest
