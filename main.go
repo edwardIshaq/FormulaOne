@@ -32,15 +32,16 @@ func main() {
 		})
 	})
 
-	r.GET("/drivers", func(c *gin.Context) {
+	r.GET("/driver", func(c *gin.Context) {
 		//get drivers
 		driver := *fetchSingleDriver(db)
-		c.JSON(http.StatusOK, gin.H{
-			"ForeName": driver.Forename,
-			"Surname":  driver.Surname,
-			"dob":      driver.Dob,
-			"url":      driver.URL,
-		})
+		c.JSON(http.StatusOK, driver)
+	})
+
+	r.GET("/drivers", func(c *gin.Context) {
+		//get drivers
+		drivers := fetchAllDrivers(db)
+		c.JSON(http.StatusOK, drivers)
 	})
 
 	r.Run() // listen and serve on 0.0.0.0:8080}
@@ -57,17 +58,23 @@ func connectToDB() (*gorm.DB, error) {
 }
 
 type driver struct {
-	Code        string
-	Dob         time.Time
-	Forename    string
-	Surname     string
-	Nationality string
-	Number      int
-	URL         string
+	Code        string    `json:"code"`
+	Dob         time.Time `json:"dob"`
+	Forename    string    `json:"forename"`
+	Surname     string    `json:"surname"`
+	Nationality string    `json:"nationality"`
+	Number      int       `json:"number"`
+	URL         string    `json:"url"`
 }
 
 func fetchSingleDriver(db *gorm.DB) *driver {
 	driver := &driver{}
 	db.First(&driver)
 	return driver
+}
+
+func fetchAllDrivers(db *gorm.DB) []driver {
+	drivers := []driver{}
+	db.Find(&drivers)
+	return drivers
 }
