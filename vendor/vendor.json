@@ -3,6 +3,10 @@
 	"ignore": "test",
 	"package": [
 		{
+			"path": "appengine/cloudsql",
+			"revision": ""
+		},
+		{
 			"checksumSHA1": "nYJ4C35LkSdSeAnBscc7QlrTAlc=",
 			"path": "github.com/campoy/embedmd",
 			"revision": "c59ce00e02967db5e93d897330142a3ef6145786",
@@ -69,6 +73,12 @@
 			"revisionTime": "2018-11-12T10:58:24Z"
 		},
 		{
+			"checksumSHA1": "BIExo6OWlfgdjN7Qh0tmxyfjNTM=",
+			"path": "github.com/go-sql-driver/mysql",
+			"revision": "6be42e0ff99645d7d9626d779001a46e39c5f280",
+			"revisionTime": "2018-11-16T10:20:33Z"
+		},
+		{
 			"checksumSHA1": "MVW67aGwWsD1pGmL04HlQlaOfKE=",
 			"path": "github.com/golang/protobuf/proto",
 			"revision": "52132540909e117f2b98b0694383dc0ab1e1deca",
@@ -103,6 +113,18 @@
 			"path": "github.com/jessevdk/go-assets",
 			"revision": "4f4301a06e153ff90e17793577ab6bf79f8dc5c5",
 			"revisionTime": "2016-09-21T14:41:39Z"
+		},
+		{
+			"checksumSHA1": "BVLcEDQelqXp6x9u4mbrxE7rxKs=",
+			"path": "github.com/jinzhu/gorm",
+			"revision": "472c70caa40267cb89fd8facb07fe6454b578626",
+			"revisionTime": "2018-11-03T14:14:39Z"
+		},
+		{
+			"checksumSHA1": "4eelJOSLZoDzLuaJvgilOBVNovU=",
+			"path": "github.com/jinzhu/inflection",
+			"revision": "04140366298a54a039076d798123ffa108fff46c",
+			"revisionTime": "2018-03-08T03:36:59Z"
 		},
 		{
 			"checksumSHA1": "2yHsOHB95SPL7kfDi21cDpq6Sxg=",
@@ -259,6 +281,12 @@
 			"path": "golang.org/x/tools/go/internal/gcimporter",
 			"revision": "89e258047f9bd4255fae0d48139e1d5ff0a7b8dd",
 			"revisionTime": "2018-10-25T20:11:44Z"
+		},
+		{
+			"checksumSHA1": "LiyXfqOzaeQ8vgYZH3t2hUEdVTw=",
+			"path": "google.golang.org/appengine/cloudsql",
+			"revision": "4a4468ece617fc8205e99368fa2200e9d1fad421",
+			"revisionTime": "2018-10-31T00:20:03Z"
 		},
 		{
 			"checksumSHA1": "MgYFT27I9gfAtSVBpGVqkCYOj3U=",
