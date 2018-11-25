@@ -21,7 +21,8 @@ func main() {
 	// Connect to DB
 	db, err := connectToDB()
 	if err != nil {
-		panic(fmt.Sprintf("Error connecting to DB %v", err))
+		// panic(fmt.Sprintf("Error connecting to DB %v", err))
+		fmt.Printf("Error connecting to db %v", err)
 	}
 	defer db.Close()
 

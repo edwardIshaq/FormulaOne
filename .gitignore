@@ -16,3 +16,5 @@ vendor/*
 !vendor/vendor.json
 /goVendorTest
 /debug
+/app/tmp
+/app/app
