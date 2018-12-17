@@ -18,3 +18,4 @@ vendor/*
 /debug
 /app/tmp
 /app/app
+.DS_Store
