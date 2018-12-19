@@ -1,5 +1,7 @@
 FROM golang
 
+LABEL appVersion="0.2"
+
 ARG app_env
 ENV APP_ENV $app_env
 
