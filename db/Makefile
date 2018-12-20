@@ -1,0 +1,25 @@
+# Database details
+MYSQL_CONTAINER_NAME := mysqlContainer
+MYSQL_PORT_MAPPING := 3307:3306
+MYSQL_ROOT_PASSWORD := qwe123
+MYSQL_NETWORK := my-bridge
+MYSQL_VOLUME := ~/Workspace/mysql/f1db
+
+print:
+	@echo MYSQL_CONTAINER_NAME=${MYSQL_CONTAINER_NAME}
+	@echo MYSQL_PORT_MAPPING=${MYSQL_PORT_MAPPING}
+	@echo MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+	@echo MYSQL_NETWORK=${MYSQL_NETWORK}
+	@echo MYSQL_VOLUME=${MYSQL_VOLUME}
+
+run:
+	docker run \
+	--name ${MYSQL_CONTAINER_NAME} \
+	--network ${MYSQL_NETWORK} \
+	-p ${MYSQL_PORT_MAPPING} \
+	-e MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} \
+	-v ${MYSQL_VOLUME}:/var/lib/mysql \
+	-d mysql
+
+attach:
+	@docker exec -it ${MYSQL_CONTAINER_NAME} bash
