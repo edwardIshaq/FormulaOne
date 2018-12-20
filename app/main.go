@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"runtime"
+	"strconv"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -55,10 +56,18 @@ func main() {
 		c.JSON(http.StatusOK, drivers)
 	})
 
-	r.GET("/races", func(c *gin.Context) {
+	r.GET("/races/*year", func(c *gin.Context) {
 		log.Println("Getting races")
+		yearParam := c.Param("year")
+		yearParam = yearParam[1:]
+		year, err := strconv.Atoi(yearParam)
+		if err != nil || year <= 0 {
+			year = 2018
+		}
+
+		race := Race{Year: year}
 		races := []Race{}
-		db.Find(&races)
+		db.Where(&race).Find(&races)
 		c.JSON(http.StatusOK, races)
 	})
 	// r.Run(":1111") // listen and serve on 0.0.0.0:8080
@@ -120,6 +129,6 @@ type Race struct {
 	Name   string    `json:"name"`
 	URL    string    `json:"url"`
 	Date   time.Time `json:"date"`
-	Time   time.Time `json:"time"`
+	Time   string    `json:"time"`
 	// Date   time.Date `json:"date"`
 }
