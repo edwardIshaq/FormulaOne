@@ -1,6 +1,6 @@
 # For a shorter version
 # git rev-parse --short HEAD
-IMAGE_NAME := "edwardi/go_server"
+IMAGE_TAG := "edwardi/go_server"
 VERSION := $(shell git rev-parse --short HEAD)
 
 BUILD_DATE := $(shell date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -19,7 +19,7 @@ NAME := $(shell basename `git rev-parse --show-toplevel`)
 VENDOR := $(shell whoami)
 
 print:
-	@echo IMAGE_NAME=${IMAGE_NAME}
+	@echo IMAGE_TAG=${IMAGE_TAG}
 	@echo VERSION=${VERSION}
 	@echo BUILD_DATE=${BUILD_DATE}
 	@echo VCS_URL=${VCS_URL}
@@ -35,13 +35,13 @@ build:
 	--build-arg VCS_REF="${VCS_REF}" \
 	--build-arg NAME="${NAME}" \
 	--build-arg VENDOR="${VENDOR}" \
-	-t ${IMAGE_NAME} .
+	-t ${IMAGE_TAG} .
 
 run:
-	@docker run -it -p 8080:8080 --network my-bridge ${IMAGE_NAME}
+	@docker run -it -p 8080:8080 --network my-bridge ${IMAGE_TAG}
 
 label:
-	@docker inspect --format='{{json .Config.Labels}}' ${IMAGE_NAME}
+	@docker image inspect --format='{{json .Config.Labels}}' ${IMAGE_TAG}
 
 test:
-	@echo ${IMAGE_NAME}
+	@echo ${IMAGE_TAG}
