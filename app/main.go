@@ -18,6 +18,14 @@ const (
 	dockerMySQLConnString = "coffeeGo:qwe123@tcp(mysqlContainer:3306)/f1db?charset=utf8&parseTime=True&loc=Local&allowCleartextPasswords=true"
 )
 
+const (
+	//mysqlF1 container creds
+	dbContainer = "mysqlF1"
+	dbPort      = "3306"
+	dbUser      = "f1DBUser"
+	dbPass      = "qwe123"
+)
+
 func main() {
 	runtime.GOMAXPROCS(4)
 

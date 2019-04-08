@@ -3,7 +3,7 @@ MYSQL_CONTAINER_NAME := mysqlContainer
 MYSQL_PORT_MAPPING := 3307:3306
 MYSQL_ROOT_PASSWORD := qwe123
 MYSQL_NETWORK := my-bridge
-MYSQL_VOLUME := ~/Workspace/mysql/f1db
+MYSQL_VOLUME := ~/Workspace/mysql/containerData
 
 print:
 	@echo MYSQL_CONTAINER_NAME=${MYSQL_CONTAINER_NAME}
