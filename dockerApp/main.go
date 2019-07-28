@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"time"
 )
 
 func main() {
@@ -12,5 +13,12 @@ func main() {
 	} else {
 		fmt.Printf("Error reading hostname %v", err)
 	}
-	fmt.Scanln()
+
+	oneSecTicker := time.NewTicker(1 * time.Second)
+	for {
+		select {
+		case currTime := <-oneSecTicker.C:
+			fmt.Println(currTime)
+		}
+	}
 }
