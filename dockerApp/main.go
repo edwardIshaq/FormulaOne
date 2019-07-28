@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	fmt.Println("Hello from go, lets run this from docker")
+	fmt.Println("Yo yo yo")
 	if host, err := os.Hostname(); err == nil {
 		fmt.Printf("Hostname: %s\n", host)
 	} else {

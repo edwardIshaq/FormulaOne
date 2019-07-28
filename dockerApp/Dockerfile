@@ -1,11 +1,7 @@
-FROM golang
+# https://weberc2.bitbucket.io/posts/golang-docker-scratch-app.html
 
-ARG app_env
-ENV APP_ENV $app_env
+FROM scratch
 
-COPY main.go /go/src/github.com/edwardIshaq/dockerApp/
-WORKDIR /go/src/github.com/edwardIshaq/dockerApp
-RUN go get ./
-RUN go build -o dockerApp  
+COPY app .
 
-CMD [ "dockerApp"]
+CMD [ "./app"]

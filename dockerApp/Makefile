@@ -1,14 +1,15 @@
-IMAGE := docker-app
+IMAGE := scratch_demo
 NETWORK := my-bridge
 CONTAINER := goServer
 
-build-image:
-	@docker image build -t docker-app .
+build:
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64  go build -a -installsuffix cgo -o app .
+	docker image build -t ${IMAGE} .
 
 run:
 	@docker run -it \
 	-h dockerAppHost \
-	docker-app
+	${IMAGE}
 
 attach:
 	@docker exec -it ${CONTAINER} bash
