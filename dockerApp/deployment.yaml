@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: demo
-          image: edwardi/scratch_demo
+          image: edwardi/scratch_demo:0.1
           resources:
             limits:
-              memory: "128Mi"
-              cpu: "500m"
+              memory: "50Mi"
+              cpu: "150m"
 
 
