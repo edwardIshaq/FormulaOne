@@ -8,8 +8,9 @@ import (
 
 func main() {
 	fmt.Println("Yo yo yo")
+	hostName := "host-unknown"
 	if host, err := os.Hostname(); err == nil {
-		fmt.Printf("Hostname: %s\n", host)
+		hostName = host
 	} else {
 		fmt.Printf("Error reading hostname %v", err)
 	}
@@ -18,7 +19,7 @@ func main() {
 	for {
 		select {
 		case currTime := <-oneSecTicker.C:
-			fmt.Println(currTime)
+			fmt.Println(hostName, currTime)
 		}
 	}
 }

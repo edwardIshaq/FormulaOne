@@ -1,4 +1,4 @@
-IMAGE := scratch_demo
+IMAGE := edwardi/scratch_demo
 
 build:
 	CGO_ENABLED=0 GOOS=linux GOARCH=amd64  go build -a -installsuffix cgo -o app .
