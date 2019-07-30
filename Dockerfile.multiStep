@@ -1,7 +1,7 @@
 FROM golang:1.9 as builder
 
-COPY ./app /go/src/github.com/user/myProject/app
-WORKDIR /go/src/github.com/user/myProject/app
+COPY ./app /go/src/github.com/edwardIshaq/FormulaOne/app
+WORKDIR /go/src/github.com/edwardIshaq/FormulaOne/app
 
 RUN go get -d -v
 
@@ -10,5 +10,5 @@ RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o app .
 FROM alpine:latest
 
 WORKDIR /root/
-COPY --from=builder /go/src/github.com/user/myProject/app/app .
+COPY --from=builder /go/src/github.com/edwardIshaq/FormulaOne/app/app .
 CMD ["./app"]
