@@ -52,11 +52,7 @@ func main() {
 
 	fmt.Println("Started")
 	db, err := tryConnectingToDB()
-	// fmt.Printf("\ndb:%v, err: %v", db, err)
 
-	// Connect to DB
-	// connectionString := dockerMySQLConnString
-	// db, err := connectToDB(connectionString)
 	if err != nil {
 		panic(fmt.Sprintf("Error connecting to DB %v", err))
 	}
