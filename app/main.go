@@ -26,14 +26,37 @@ const (
 	dbPass      = "qwe123"
 )
 
+func tryConnectingToDB() (*gorm.DB, error) {
+	timeout := time.NewTimer(5 * time.Minute)
+	ticker := time.NewTicker(1 * time.Second)
+	connectionString := dockerMySQLConnString
+
+	for {
+		select {
+		case <-timeout.C:
+			return nil, fmt.Errorf("\nConnecting to db aborted! timed out")
+
+		case <-ticker.C:
+			fmt.Printf("\nConnecting to db ...")
+			db, err := connectToDB(connectionString)
+			if db != nil && err == nil {
+				return db, nil
+			}
+			fmt.Printf("\nConnecting to db failed: %v", err)
+		}
+	}
+}
+
 func main() {
 	runtime.GOMAXPROCS(4)
 
 	fmt.Println("Started")
+	db, err := tryConnectingToDB()
+	// fmt.Printf("\ndb:%v, err: %v", db, err)
 
 	// Connect to DB
-	connectionString := dockerMySQLConnString
-	db, err := connectToDB(connectionString)
+	// connectionString := dockerMySQLConnString
+	// db, err := connectToDB(connectionString)
 	if err != nil {
 		panic(fmt.Sprintf("Error connecting to DB %v", err))
 		// fmt.Printf("Error connecting to db %v", err)
