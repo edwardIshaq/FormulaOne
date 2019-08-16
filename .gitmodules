@@ -1,0 +1,3 @@
+[submodule "db/ergast-mrd"]
+	path = db/ergast-mrd
+	url = https://github.com/rubenv/ergast-mrd.git

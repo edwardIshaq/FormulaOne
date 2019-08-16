@@ -1,10 +1,10 @@
 NETWORK := my-bridge
-CONTAINER := goServer
-IMAGE := edwrardi/goServer
+CONTAINER := go_server
+IMAGE := edwrardi/go_server
 VERSION := 1.2
 IMAGE_FULL := ${IMAGE}:${VERSION}
 
-print: 
+print:
 	@echo IMAGE_FULL=${IMAGE_FULL}
 	@echo NETWORK=${NETWORK}
 	@echo CONTAINER=${CONTAINER}
@@ -12,11 +12,11 @@ print:
 build:
 	@docker image build -t ${IMAGE}:${VERSION} .
 
-run:
+run-docker:
 	docker run \
 	--name ${CONTAINER} \
 	--network ${NETWORK} \
-	-d ${IMAGE}:${VERSION}
+	-d ${IMAGE_FULL}
 
 attach:
 	@docker exec -it ${CONTAINER} bash
